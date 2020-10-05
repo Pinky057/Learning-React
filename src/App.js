@@ -1,16 +1,20 @@
-import React,{useState} from 'react';
-import './App.css';
+import React from 'react'
+import './App.css'
+import ComponentC from './components/ComponentC'
+
+export const UserContext = React.createContext()
+export const ChannelContext = React.createContext()
 
 function App() {
-  const[count, changeCount]=useState(0);
-  return (
-      <div class="counter">
-      <h2>{count}</h2>
-<button onClick={()=>changeCount(count - 1)}><span>-1</span></button>
-<button onClick={()=>changeCount(count + 1)}><span>+1</span></button>
-<button onClick={()=>changeCount(count === 0)}><span>Reset</span></button>
-</div>
-  );
+    return (
+        <div className="App">
+            <UserContext.Provider value={'Ishrat jahan pinky'}>
+                <ChannelContext.Provider value={'Hi There !'}>
+                    <ComponentC />
+                </ChannelContext.Provider>
+            </UserContext.Provider>
+        </div>
+    );
 }
 
-export default App;
+export default App
