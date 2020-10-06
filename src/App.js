@@ -1,24 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useRef } from 'react';
+
+
+import track1 from './track1.mp3';
 import './App.css';
 
 function App() {
+    const audioRef =useRef(null);
+    useEffect(()=>{
+        audioRef.current.play();
+    },[]);
+
+    const handleClick =()=>{
+        audioRef.current.pause();
+    };
     return (
-        <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                    Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Learn React
-                </a>
-            </header>
+        <div>
+        <audio src={track1} ref={ audioRef }/>
+        <button onClick={handleClick}> Stop Play</button>
         </div>
     );
 }
