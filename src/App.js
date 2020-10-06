@@ -7,7 +7,9 @@ import { UserContext } from "./userContext";
 
 
 function AppRouter() {
-    const [value, setValue]=useState("hello from pinky")
+    const [user, setUser] = useState(null);
+
+    const value = useMemo(() => ({ user, setUser }), [user, setUser]);
 
     return (
         <Router>
@@ -22,7 +24,7 @@ function AppRouter() {
                         </li>
                     </ul>
                 </nav>
-                <UserContext.Provider value={{ value, setValue }}>
+                <UserContext.Provider value={value}>
                     <Route path="/" exact component={Index} />
                     <Route path="/about/" component={About} />
                 </UserContext.Provider>
@@ -32,5 +34,3 @@ function AppRouter() {
 }
 
 export default AppRouter;
-
-

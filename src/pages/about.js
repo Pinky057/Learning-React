@@ -4,14 +4,11 @@ import { UserContext } from "../userContext";
 
 export function About(){
 
-    const {value, setValue} = useContext(UserContext);
+    const {user} = useContext(UserContext);
     return(
         <div>
-            <h2>About</h2>
-            <div>{value}</div>
-            <button onClick={()=>setValue("hello!!!!!!!! from this side")}>
-                Change Value
-            </button>
+            <h2   style={{ padding: 10, margin: 10 }}>About</h2>
+            <pre>{ JSON.stringify(user, null, 2) }</pre>
         </div>
 
     )
