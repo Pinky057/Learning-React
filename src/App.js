@@ -7,6 +7,7 @@ import { UserContext } from "./userContext";
 
 
 function AppRouter() {
+    const [value, setValue]=useState("hello from pinky")
 
     return (
         <Router>
@@ -21,7 +22,7 @@ function AppRouter() {
                         </li>
                     </ul>
                 </nav>
-                <UserContext.Provider value="hello from context">
+                <UserContext.Provider value={{ value, setValue }}>
                     <Route path="/" exact component={Index} />
                     <Route path="/about/" component={About} />
                 </UserContext.Provider>
